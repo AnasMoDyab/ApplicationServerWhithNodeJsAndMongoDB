@@ -21,7 +21,7 @@ router.get('/', authenticate.verifyAdmin,(req,res,next) => {
 });
 router.options('*',  (req, res) => { res.sendStatus(200); } )
 
-router.post('/signup', (req, res, next) => {
+router.post('/signup', authenticate.verifyUser ,(req, res, next) => {
     console.log("req.body",req.body);
   User.register(new User({username: req.body.username}),
 
